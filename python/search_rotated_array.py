@@ -1,5 +1,5 @@
 from typing import List
-from common.util import printCost
+from python.common.util import printCost
 
 
 class Solution:
