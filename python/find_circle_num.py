@@ -6,6 +6,9 @@ class Solution:
 
     @printCost
     def findCircleNum(self, M: List[List[int]]) -> int:
+        def dfs(M, visited, i):
+            pass
+
         pass
 
 
