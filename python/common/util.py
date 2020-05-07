@@ -7,7 +7,6 @@ def printCost(fn):
     :param fn:
     :return:
     """
-
     def cost(*args):
         start = timeit.default_timer()
         ret = fn(*args)
@@ -15,3 +14,24 @@ def printCost(fn):
         return ret
 
     return cost
+
+
+def printList(l, name=None, with_tail=True):
+    """
+    打印链表
+    :param l:
+    :param name:
+    :param with_tail:
+    :return:
+    """
+    if name:
+        print(name, end=": ")
+    while l:
+        print(l.val, end='')
+        l = l.next
+        if l:
+            print(' -> ', end='')
+        else:
+            if with_tail:
+                print(' -> ', end='None')
+            print('')
