@@ -5,7 +5,7 @@ import math
 class Solution:
 
     def __init__(self):
-        self._a = 0
+        self._y = 0
 
     @printCost
     def mySprt(self, x: int) -> int:
@@ -21,7 +21,7 @@ class Solution:
         if x == 0: return 0
 
         # 从x开始迭代
-        self._a = x
+        self._y = x
         return self.my_sprt(x)
 
     def my_sprt(self, x):
@@ -36,19 +36,22 @@ class Solution:
         """
         # 求 x 和 目标数/x 的平均数
         # 如果平均数不等于 x 则继续 用平均数 迭代
-        ans = (x + self._a / x) / 2
+        ans = (x + self._y / x) / 2
         if ans == x:
             return x
         else:
             return self.my_sprt(ans)
 
-    def mySprt2(self, x):
+    def delta_f(self):
         """
-        递归梯度下降法
-
-        :param x:   要开平方的目标数
-        :param rx:  迭代区间
-        :param e:   精度
+        开平方公式推导:
+        1. 令: f(x) = x^2 - a
+        2. 导函数（斜率公式 - y的增量除以x的增量 - 函数 f 在 x0 处的导数）: delta_f(x0) = (f(x) - f(x0)) / (x - x0)
+        3. 即: f(x) = f(x0) + (x - x0) * delta_f(x0)
+        4. 当 f(x) 趋近于0时，f(x0) + (x - x0) * delta_f(x0) = 0
+        5. 则 x = x0 - f(x0) / delta_f(x0)
+        6. 则 x = x0 - (x0^2 - a) / 2 * x0, 其中 delta_f(x0) = 2 * x0, x^2 的导数为 2 * x
+        7. 则 x = (x0 + a / x0) / 2
         :return:
         """
 
