@@ -22,3 +22,9 @@ class ListNode:
             node = self._node
             self._node = self._node.next
             return node
+
+    def iter(self):
+        while self._node:
+            node = self._node
+            self._node = self._node.next
+            yield node
